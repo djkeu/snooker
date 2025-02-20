@@ -2,15 +2,13 @@ class SnookerGame:
     def __init__(self):
         """Initialize the game scores state."""
         self.red_balls = 15
-        self.score_player_1 = 0
-        self.score_player_2 = 0
-        self.maximum_score = 147
-        self.available_player_1 = self.maximum_score
-        self.available_player_2 = self.maximum_score
-        self.possible_score_player_1 = self.maximum_score
-        self.possible_score_player_2 = self.maximum_score
+        self.available_points = (self.red_balls * 8) + 27
         self.red_needed_next = True
         self.player_1_turn = True
+        self.score_player_1 = 0
+        self.score_player_2 = 0
+        self.possible_score_player_1 = self.available_points
+        self.possible_score_player_2 = self.available_points
         self.yellow_ball = 2
         self.colored_balls = {
             2: "yellow",
@@ -20,8 +18,7 @@ class SnookerGame:
             6: "pink",
             7: "black",
         }
-        self.first_input = True
-        self.shot_prompt = "What's the value of the shot: "
+        self.prompt = self.initialize_prompt()
 
     # Ball handling
     def initialize_prompt(self):
